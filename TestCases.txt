@@ -1,0 +1,60 @@
+Note:
+* Using Apache CLI to parse input parameters.  
+* When optional parameter is wrong, will use default value or NULL where ever makes sense (recoverable errors)
+
+
+Negative test cases
+
+1) Time range: 
+
+   a) min time is > max time
+   Expected results: Recoverable error, reset such a way all timestamps will be shown
+   Test result: pass
+
+   b) min time is < max time
+   Expected results: happy path, timestamps in the range will be shown  
+   Test result: pass
+
+   c) min time: is not a number or negative number
+    Expected results: Recoverable error, set to NULL
+   
+   d) max time: is not a number or negative number
+    Expected results: Recoverable error, set to NULL
+
+2) Limit:
+   a) Happy path: if a positive number is specified as limit, will show results with specified limit
+   b) If limit specified is not a number, or less than 0, all data will be shown (recoverable error)
+   c) If limit not specified, will use 100 as default
+
+3) Format:
+   a) Specified csv format will show results as comma separated
+   b) If -f specified other than csv will show results in tabular format
+   c) if format is not specified, will show as tabular format
+
+4) Engine:
+   a) If hive is specified, will use hive
+   b) Other than hive, will use presto.  This means that if user specifies other than hive or presto, presto will be used.
+
+   * Note that Hive engine seems to hang
+
+List of examples input parameters tested:
+==========================================
+
+1) Invalid limit/minimum timestamp: (recoverable)
+   -e presto -f  csv -db jerry_db -tb ohlcv -h my  -l  hey  -m junk -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+2) Valid parameters: (recoverable)
+   -e presto -f  csv -db jerry_db -tb ohlcv -h my  -l  20  -m 100 -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+3) Invalid output format/limit/minimum timestamp: (recoverable)
+   -e presto -f  goo -db jerry_db -tb ohlcv -h my  -l  hey  -m junk -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+4)  Optional parameters with invalid values for output format, limit, min and max timestamp (recoverable)
+   -e presto -f  goo -db jerry_db -tb ohlcv -h my  -l  hey  -m junk -M hey -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+
+5) Missing db name and or table name in input: exit -1 (not recoverable)
+
+6) Wrong db name and or table name: not recoverable.  
+
+7) Wrong column name specified will result in exit code -1
+
+8) Happy paths:
+   Specify correct input for all the parameters using different values or different list of columns to show
+

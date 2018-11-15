@@ -1,0 +1,60 @@
+Input parameters: -e presto -f  csv -db jerry_db -tb ohlcv -h my  -l  20  -m 100 -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+===============================================================================================================================
+Database name:jerry_db
+Table name:  ohlcv
+format= csv
+engine= presto
+min time= 100
+max time= 1251109200
+column list= Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+usage: CommandLineParameters
+ -c <arg>    List of Column
+ -db <arg>   Database Name
+ -e <arg>    Query Engine
+ -f <arg>    Format
+ -h          Shows this Help
+ -l <arg>    Query Limit
+ -m <arg>    Minimum timestamp
+ -M <arg>    Maximum timestamp
+ -tb <arg>   Table Name
+ Symbol  Timestamp  Day  Open  High  Low  Close  Volume Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.command.TDClientAPI getJobResult2
+INFO: write the result to file
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: check the size of the job result: size = 447
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: created temp file: C:\Users\jerry\AppData\Local\Temp\td-jdbc-1582790221600805149.tmp
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: read the size of the job result: 447
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: finished writing file
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.command.TDClientAPI getJobResult2
+INFO: read the result to file: path = C:\Users\jerry\AppData\Local\Temp\td-jdbc-1582790221600805149.tmp
+ MSFT, 1251106200, 24, 24.41, 24.42, 24.31, 24.31, 683713
+ MSFT, 1251106260, 24, 24.32, 24.33, 24.28, 24.3, 207651
+ MSFT, 1251106320, 24, 24.29, 24.33, 24.29, 24.31, 230729
+ MSFT, 1251106380, 24, 24.31, 24.38, 24.3, 24.38, 191318
+ MSFT, 1251106440, 24, 24.39, 24.42, 24.38, 24.42, 238711
+ MSFT, 1251106500, 24, 24.41, 24.42, 24.38, 24.38, 203860
+ MSFT, 1251106560, 24, 24.39, 24.44, 24.38, 24.44, 300527
+ MSFT, 1251106620, 24, 24.44, 24.45, 24.43, 24.45, 190160
+ MSFT, 1251106680, 24, 24.45, 24.46, 24.41, 24.45, 318010
+ MSFT, 1251106740, 24, 24.45, 24.49, 24.44, 24.48, 472225
+ MSFT, 1251106800, 24, 24.48, 24.5, 24.47, 24.48, 292740
+ MSFT, 1251106860, 24, 24.49, 24.54, 24.48, 24.54, 482757
+ MSFT, 1251106920, 24, 24.54, 24.55, 24.53, 24.55, 192258
+ MSFT, 1251106980, 24, 24.55, 24.56, 24.54, 24.56, 156458
+ MSFT, 1251107040, 24, 24.56, 24.56, 24.55, 24.56, 82065
+ MSFT, 1251107100, 24, 24.56, 24.58, 24.55, 24.58, 187102
+ MSFT, 1251107160, 24, 24.57, 24.6, 24.57, 24.59, 124728
+ MSFT, 1251107220, 24, 24.59, 24.59, 24.52, 24.53, 342662
+ MSFT, 1251107280, 24, 24.52, 24.53, 24.49, 24.5, 517180
+ MSFT, 1251107340, 24, 24.5, 24.53, 24.5, 24.51, 215856
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.TDResultSet close
+INFO: closed file based unpacker
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.TDResultSet close
+INFO: deleted temp file: C:\Users\jerry\AppData\Local\Temp\td-jdbc-1582790221600805149.tmp
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.TDResultSet close
+INFO: closed file based unpacker
+Nov 14, 2018 1:03:51 PM com.treasuredata.jdbc.TDResultSet close
+INFO: deleted temp file: C:\Users\jerry\AppData\Local\Temp\td-jdbc-1582790221600805149.tmp
+Success, return code 0

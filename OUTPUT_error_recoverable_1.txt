@@ -1,0 +1,136 @@
+Optional parameters with invalid values: recoverable error and will use default values
+
+-e presto -f  csv -db jerry_db -tb ohlcv -h my  -l  hey -m junk -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+====================================================================
+Database name:jerry_db
+Table name:  ohlcv
+NumberFormatException: For input string: "hey"
+***Error! limit parameter hey is not valid, reset to show all data
+format= csv
+engine= presto
+NumberFormatException: For input string: "junk"
+***Error! min_time junk is not valid, reset to null
+max time= 1251109200
+column list= Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+usage: CommandLineParameters
+ -c <arg>    List of Column
+ -db <arg>   Database Name
+ -e <arg>    Query Engine
+ -f <arg>    Format
+ -h          Shows this Help
+ -l <arg>    Query Limit
+ -m <arg>    Minimum timestamp
+ -M <arg>    Maximum timestamp
+ -tb <arg>   Table Name
+Here* min time is null: range_str  WHERE TD_TIME_RANGE(time, NULL ,1251109200) 
+SELECT Symbol,Timestamp,Day,Open,High,Low,Close,Volume FROM ohlcv
+ Symbol  Timestamp  Day  Open  High  Low  Close  Volume Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.command.TDClientAPI getJobResult2
+INFO: write the result to file
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: check the size of the job result: size = 1239
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: created temp file: C:\Users\jerry\AppData\Local\Temp\td-jdbc-9157007750890908298.tmp
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: read the size of the job result: 1239
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.command.TDClientAPI writeJobResultToTempFile
+INFO: finished writing file
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.command.TDClientAPI getJobResult2
+INFO: read the result to file: path = C:\Users\jerry\AppData\Local\Temp\td-jdbc-9157007750890908298.tmp
+ MSFT, 1251106200, 24, 24.41, 24.42, 24.31, 24.31, 683713
+ MSFT, 1251106260, 24, 24.32, 24.33, 24.28, 24.3, 207651
+ MSFT, 1251106320, 24, 24.29, 24.33, 24.29, 24.31, 230729
+ MSFT, 1251106380, 24, 24.31, 24.38, 24.3, 24.38, 191318
+ MSFT, 1251106440, 24, 24.39, 24.42, 24.38, 24.42, 238711
+ MSFT, 1251106500, 24, 24.41, 24.42, 24.38, 24.38, 203860
+ MSFT, 1251106560, 24, 24.39, 24.44, 24.38, 24.44, 300527
+ MSFT, 1251106620, 24, 24.44, 24.45, 24.43, 24.45, 190160
+ MSFT, 1251106680, 24, 24.45, 24.46, 24.41, 24.45, 318010
+ MSFT, 1251106740, 24, 24.45, 24.49, 24.44, 24.48, 472225
+ MSFT, 1251106800, 24, 24.48, 24.5, 24.47, 24.48, 292740
+ MSFT, 1251106860, 24, 24.49, 24.54, 24.48, 24.54, 482757
+ MSFT, 1251106920, 24, 24.54, 24.55, 24.53, 24.55, 192258
+ MSFT, 1251106980, 24, 24.55, 24.56, 24.54, 24.56, 156458
+ MSFT, 1251107040, 24, 24.56, 24.56, 24.55, 24.56, 82065
+ MSFT, 1251107100, 24, 24.56, 24.58, 24.55, 24.58, 187102
+ MSFT, 1251107160, 24, 24.57, 24.6, 24.57, 24.59, 124728
+ MSFT, 1251107220, 24, 24.59, 24.59, 24.52, 24.53, 342662
+ MSFT, 1251107280, 24, 24.52, 24.53, 24.49, 24.5, 517180
+ MSFT, 1251107340, 24, 24.5, 24.53, 24.5, 24.51, 215856
+ MSFT, 1251107400, 24, 24.5, 24.51, 24.49, 24.5, 201019
+ MSFT, 1251107460, 24, 24.5, 24.51, 24.49, 24.49, 211956
+ MSFT, 1251107520, 24, 24.5, 24.5, 24.47, 24.47, 421803
+ MSFT, 1251107580, 24, 24.48, 24.52, 24.47, 24.5, 227880
+ MSFT, 1251107640, 24, 24.5, 24.51, 24.48, 24.48, 330021
+ MSFT, 1251107700, 24, 24.49, 24.51, 24.48, 24.5, 226807
+ MSFT, 1251107760, 24, 24.5, 24.55, 24.5, 24.52, 147391
+ MSFT, 1251107820, 24, 24.52, 24.55, 24.52, 24.52, 122741
+ MSFT, 1251107880, 24, 24.52, 24.53, 24.5, 24.53, 86414
+ MSFT, 1251107940, 24, 24.52, 24.56, 24.52, 24.53, 84261
+ MSFT, 1251108000, 24, 24.53, 24.54, 24.53, 24.53, 33114
+ MSFT, 1251108060, 24, 24.54, 24.54, 24.51, 24.52, 110950
+ MSFT, 1251108120, 24, 24.52, 24.61, 24.51, 24.6, 734465
+ MSFT, 1251108180, 24, 24.6, 24.62, 24.6, 24.62, 218232
+ MSFT, 1251108240, 24, 24.61, 24.62, 24.6, 24.61, 125176
+ MSFT, 1251108300, 24, 24.61, 24.61, 24.6, 24.6, 14887
+ MSFT, 1251108360, 24, 24.61, 24.61, 24.59, 24.6, 50655
+ MSFT, 1251108420, 24, 24.6, 24.61, 24.6, 24.6, 20296
+ MSFT, 1251108480, 24, 24.61, 24.62, 24.6, 24.61, 82803
+ MSFT, 1251108540, 24, 24.61, 24.68, 24.61, 24.62, 335181
+ MSFT, 1251108600, 24, 24.63, 24.66, 24.6, 24.65, 242444
+ MSFT, 1251108660, 24, 24.65, 24.67, 24.65, 24.65, 84830
+ MSFT, 1251108720, 24, 24.65, 24.66, 24.64, 24.66, 204385
+ MSFT, 1251108780, 24, 24.65, 24.67, 24.65, 24.66, 295951
+ MSFT, 1251108840, 24, 24.65, 24.67, 24.61, 24.62, 121195
+ MSFT, 1251108900, 24, 24.62, 24.62, 24.6, 24.6, 69598
+ MSFT, 1251108960, 24, 24.61, 24.61, 24.58, 24.6, 64251
+ MSFT, 1251109020, 24, 24.59, 24.6, 24.58, 24.59, 28062
+ MSFT, 1251109080, 24, 24.58, 24.61, 24.58, 24.6, 203257
+ MSFT, 1251109140, 24, 24.61, 24.61, 24.6, 24.61, 30623
+ MSFT, 1251109200, 24, 24.61, 24.61, 24.6, 24.6, 99605
+ MSFT, 1251109260, 24, 24.6, 24.66, 24.6, 24.65, 357877
+ MSFT, 1251109320, 24, 24.65, 24.67, 24.65, 24.67, 109011
+ MSFT, 1251109380, 24, 24.67, 24.67, 24.65, 24.66, 127439
+ MSFT, 1251109440, 24, 24.66, 24.67, 24.64, 24.67, 197860
+ MSFT, 1251109500, 24, 24.66, 24.68, 24.66, 24.68, 92757
+ MSFT, 1251109560, 24, 24.67, 24.68, 24.64, 24.65, 239113
+ MSFT, 1251109620, 24, 24.65, 24.65, 24.64, 24.64, 115348
+ MSFT, 1251109680, 24, 24.65, 24.65, 24.64, 24.65, 27803
+ MSFT, 1251109740, 24, 24.65, 24.66, 24.64, 24.65, 172332
+ MSFT, 1251109800, 24, 24.66, 24.66, 24.65, 24.66, 84211
+ MSFT, 1251109860, 24, 24.65, 24.66, 24.65, 24.65, 25657
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.TDResultSet close
+INFO: closed file based unpacker
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.TDResultSet close
+INFO: deleted temp file: C:\Users\jerry\AppData\Local\Temp\td-jdbc-9157007750890908298.tmp
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.TDResultSet close
+INFO: closed file based unpacker
+Nov 14, 2018 1:14:13 PM com.treasuredata.jdbc.TDResultSet close
+INFO: deleted temp file: C:\Users\jerry\AppData\Local\Temp\td-jdbc-9157007750890908298.tmp
+ MSFT, 1251109920, 24, 24.65, 24.66, 24.65, 24.65, 48369
+ MSFT, 1251109980, 24, 24.65, 24.66, 24.65, 24.65, 23968
+ MSFT, 1251110040, 24, 24.66, 24.66, 24.65, 24.65, 99343
+ MSFT, 1251110100, 24, 24.65, 24.66, 24.64, 24.64, 109961
+ MSFT, 1251110160, 24, 24.64, 24.66, 24.61, 24.61, 633578
+ MSFT, 1251110220, 24, 24.61, 24.66, 24.61, 24.65, 877619
+ MSFT, 1251110280, 24, 24.65, 24.66, 24.62, 24.62, 340907
+ MSFT, 1251110340, 24, 24.62, 24.65, 24.62, 24.65, 434470
+ MSFT, 1251110400, 24, 24.66, 24.66, 24.65, 24.65, 22786
+ MSFT, 1251110460, 24, 24.66, 24.66, 24.65, 24.65, 48828
+ MSFT, 1251110520, 24, 24.65, 24.67, 24.65, 24.67, 62920
+ MSFT, 1251110580, 24, 24.67, 24.67, 24.66, 24.66, 23245
+ MSFT, 1251110640, 24, 24.67, 24.67, 24.66, 24.66, 13685
+ MSFT, 1251110700, 24, 24.67, 24.67, 24.66, 24.66, 9161
+ MSFT, 1251110760, 24, 24.67, 24.67, 24.66, 24.67, 11408
+ MSFT, 1251110820, 24, 24.67, 24.67, 24.65, 24.66, 46175
+ MSFT, 1251110880, 24, 24.65, 24.66, 24.65, 24.65, 50500
+ MSFT, 1251110940, 24, 24.66, 24.66, 24.65, 24.65, 27356
+ MSFT, 1251111000, 24, 24.65, 24.66, 24.65, 24.66, 32391
+ MSFT, 1251111060, 24, 24.65, 24.66, 24.65, 24.65, 66375
+ MSFT, 1251111120, 24, 24.66, 24.66, 24.65, 24.65, 42635
+ MSFT, 1251111180, 24, 24.66, 24.66, 24.65, 24.65, 60223
+ MSFT, 1251111240, 24, 24.65, 24.66, 24.63, 24.65, 499772
+ MSFT, 1251111300, 24, 24.66, 24.66, 24.61, 24.61, 336552
+ MSFT, 1251111360, 24, 24.61, 24.63, 24.61, 24.62, 221761
+ MSFT, 1251111420, 24, 24.62, 24.62, 24.61, 24.61, 42458
+ MSFT, 1251111480, 24, 24.62, 24.64, 24.61, 24.63, 143838
+Success, return code 0

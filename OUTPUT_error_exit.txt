@@ -1,0 +1,13 @@
+Not specifing database name or table name: exit with error code -1
+====================================================================
+
+ -c <arg>    List of Column
+ -db <arg>   Database Name
+ -e <arg>    Query Engine
+ -f <arg>    Format
+ -h          Shows this Help
+ -l <arg>    Query Limit
+ -m <arg>    Minimum timestamp
+ -M <arg>    Maximum timestamp
+ -tb <arg>   Table Name
+db name and/or table name not specified, exiting.. return code -1
