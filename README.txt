@@ -1,12 +1,17 @@
 The program can be run using the following steps:
 
-* Create a Eclipse project using the pom.xml
+From Eclipse:
+	* Create a Eclipse project using the pom.xml
 
-* There is only one java program: InterviewHW.java
+	* There is only one java program: InterviewHW.java
+	
+	* Run program from Eclipse "Run Configurations"
 
-* Run program from Eclipse "Run Configurations"
+	* Example of configuration: -e presto -f csv -db jerry_db -tb ohlcv -h my -l 20 -m 100 -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
 
-* Example of configuration: -e presto -f csv -db jerry_db -tb ohlcv -h my -l 20 -m 100 -M 1251109200 -c Symbol,Timestamp,Day,Open,High,Low,Close,Volume
+From console:
+	* Export runnable jar and choose library handling: Package required libraries into generated JAR
+	* run with command: java -jar td.jar -db jerry_db -tb ohlcv
 
 * See test cases file for test cases being used in my runs for details
   Handle many combinations of input parameters.  
