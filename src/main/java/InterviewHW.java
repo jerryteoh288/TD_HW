@@ -3,17 +3,10 @@ import java.util.Properties;
 import com.treasuredata.client.*;
 
 import org.apache.commons.cli.*;
-/*import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.CommandLineParser;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.ParseException;
-import org.apache.commons.cli.HelpFormatter;
-*/
 
 public class InterviewHW {
 
-	// Validate if an input parameter is an integer.  
+	// Validate if an input parameter which suppose to be an integer is indeed an integer.  
 	// In this method, negative number is considered invalid input
 	  public static boolean  isInteger (String input1)
 	  {
@@ -34,7 +27,7 @@ public class InterviewHW {
 
 	  }
 	  
-	 // Connecting to TD to retrieve data based on input parameters
+	 // Connecting to TD to query  data based on input parameters
 	  public static void connectWithApiKey(String[] param)
 			  throws SQLException
 	  {
@@ -48,6 +41,7 @@ public class InterviewHW {
 		  String limit= param[6];
 
 		  String sel_str=param[7];
+		  System.out.println(sel_str);
 		  if (sel_str.equals("")) {
 			  sel_str="SELECT * ";
 		  }
@@ -82,12 +76,7 @@ public class InterviewHW {
 		  //System.out.println(dbname + "  "+ tablename + "  engine" +engine);
 		  Properties props = new Properties();
 		  props.setProperty("apikey", "6092/c1d9e1c7eae582374c1a9fafde87961218faf95a" );
-		  try {
-			Class.forName("jdbc:td://api-development.treasuredata.com");
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		  if (engine.equals("hive")) {
 			  System.out.println("Using Hive");
 			  conn = DriverManager.getConnection(
@@ -130,7 +119,7 @@ public class InterviewHW {
 
 
 			  int numCol = rsmd.getColumnCount();
-			  //** Print column name
+			  //** Print column name as header for data to be printed below
 			  for (int k=1; k<= numCol; k++) {
 				  System.out.print(String.format(" %s ", rsmd.getColumnName(k)));
 			  }
@@ -163,6 +152,13 @@ public class InterviewHW {
 			  conn.close();
 		  }
 	  }
+	  
+	  /* Main method will parse input parameters: 
+	   * a) Invalid optional parameters: default values will be used and program will procees
+	   * b) Not entering db name or table name: will exit program with exit code -1
+	   * c) Call connectWithApiKey(....) to query data
+	   * 	   * 
+	   */
 	  public static void main(String[] args) {
 		  String dbname="";
 		  String tablename="";
@@ -286,8 +282,6 @@ public class InterviewHW {
 		  param[6]=limit;
 		  param[7]=col_list;
 		  try {
-
-
 			  connectWithApiKey(param);
 			  System.out.println("Success, return code 0");
 			  System.exit(0);
